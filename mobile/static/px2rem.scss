@@ -2,4 +2,7 @@
 	@return $px*320/$designWidth/20 + rem;
 }
 
+@function d2rem($d){
+	@return ($d*300/72)*320/$designWidth/20 + rem;
+}
 $designWidth : 1080; //如设计图是750

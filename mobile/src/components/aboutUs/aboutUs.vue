@@ -1,0 +1,78 @@
+<template lang="html">
+  <div class="aboutUs">
+    <myXHeader header="关于我们"></myXHeader>
+    <div class="text">
+      <div class="textImg">
+      </div>
+      <p class="title1">── 华科约拍平台</p>
+      <p>当前版本1.1.1</p>
+      <p class="title">产品来历:</p>
+      <p>从军训服到学士帽</p>
+      <p>青春四年黄金时代</p>
+      <p>青年园里的玉兰花开</p>
+      <p>东九路上的漂洋过海</p>
+      <p>喻园大道的银杏树下</p>
+      <p>数不尽的情侣在秀恩爱</p>
+      <p>在这个人人都是摄影师的年代</p>
+      <p>每个人都是最美的存在</p>
+      <p>我们一直梦想着星辰大海</p>
+      <p>我们更需要记录青春与爱</p>
+      <p>要约拍，来友拍</p>
+      <p>照片恒久远</p>
+      <p>一张永流传</p>
+
+      <p class="title">友拍能为你做什么:</p>
+      <p class="nText">友拍筛选并集结了众多不同风格的优秀校园学生摄影师，满足个人、集体和航拍的众多需求，
+      用最实惠的价格找到最适合你的摄影师，得到最让你满意的照片集，留下你最珍贵的回忆。</p>
+
+    </div>
+  </div>
+</template>
+
+<script>
+import myXHeader from '../myXHeader.vue'
+
+export default {
+  name: 'aboutUs',
+  data () {
+    return {
+
+    }
+  },
+  components: {
+    myXHeader,
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+@import "static/px2rem.scss";
+@import "../../common/scss/text.scss";
+
+.text{
+  .textImg{
+    width: px2rem(480);
+    height: px2rem(187);
+    margin-top: px2rem(108);
+    margin-left: px2rem(300);
+    background-image: url('./youpai.png');
+    background-size: 100%;
+    margin-bottom: px2rem(92);
+  }
+  p{
+    text-align: center;
+  }
+  p.title1{
+    font-weight: bold;
+    margin-bottom: px2rem(40);
+  }
+  p.title{
+    font-weight: bold;
+    margin-top: px2rem(40);
+  }
+  p.nText{
+    margin: px2rem(60) px2rem(154) 0 px2rem(154);
+    text-align: left;
+  }
+}
+</style>

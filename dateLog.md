@@ -16,10 +16,13 @@
 			use muse-ui    
 		```  
 
- - themeRec.vue
+ - atoatom .
+ - 
 		- 3 masker
  - picRec.vue
 		- 3 awesome-slider
  - phxRec.vue
 		- 3 awesome-slider   
- q: gap的颜色没有定下来  
+	
+ **q: gap的颜色没有定下来  title的字号不对 主题推荐这一块的布局不够清晰明了**
+ 

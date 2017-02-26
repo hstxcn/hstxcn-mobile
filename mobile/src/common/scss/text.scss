@@ -1,0 +1,8 @@
+@import "static/px2rem.scss";
+.text{
+  font-size: d2rem(8);
+  line-height: d2rem(15);
+  letter-spacing: d2rem(1);
+  color: #343844;
+  text-indent: d2rem(16);
+}

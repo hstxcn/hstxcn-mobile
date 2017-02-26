@@ -1,33 +1,27 @@
-<template>
-<div>
-  <home-swiper></home-swiper>
-  <home-nav></home-nav>
-  <home-gap v-bind:style="gapStyle"></home-gap>
-</div>
+<template lang="html">
+  <div class="app">
+    <keep-alive>
+     <router-view >
+     </router-view>
+    </keep-alive>
+  </div>
 </template>
 
 <script>
-import homeSwiper from "./components/homeSwiper.vue"
-import homeNav from "./components/homeNav.vue"
-import homeGap from "./components/homeGap.vue"
+import homeMenu from './components/homeMenu/HomeMenu.vue'
 
 export default {
-  data: function(){
-    var gapStyle = {
-      backgroundColor: "#eceff1",
-    }
-    return({
-      gapStyle
-    })
-  },
-  components: {
-    'home-swiper': homeSwiper,
-    'home-nav': homeNav,
-    'home-gap': homeGap,
+  name: "app",
+  components:{
+    homeMenu,
   }
 }
 </script>
 
+
+
 <style lang="less">
 @import '~vux/src/styles/reset.less';
+@import '~vux/src/styles/1px.less';
+@import '~vux/src/styles/center.less';
 </style>
