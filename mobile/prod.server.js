@@ -5,6 +5,24 @@ var port = process.env.PORT || config.build.port;
 
 var app = express();
 
+var appData = require('./data.json');
+var homeSwiper = appData.homeSwiper;
+
+
+var apiRoutes = express.Router();
+
+apiRoutes.get('/homeSwiper', function (req, res) {
+	res.json({
+		errno: 0,
+		srcArr: homeSwiper,
+	});
+});
+
+app.use('/api', apiRoutes);
+
+
+
+
 var router = express.Router();
 
 router.get('/', function (req, res, next) {
