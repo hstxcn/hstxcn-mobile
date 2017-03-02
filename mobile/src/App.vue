@@ -1,5 +1,6 @@
 <template lang="html">
   <div class="app">
+    <loading v-model="isLoading"></loading>
     <keep-alive>
      <router-view >
      </router-view>
@@ -9,11 +10,19 @@
 
 <script>
 import homeMenu from './components/homeMenu/HomeMenu.vue'
+import { Loading } from 'vux'
+import { mapState } from 'vuex'
 
 export default {
   name: "app",
   components:{
     homeMenu,
+    Loading,
+  },
+  computed: {
+    ...mapState({
+      isLoading: state => state.vux.isLoading
+    })
   }
 }
 </script>

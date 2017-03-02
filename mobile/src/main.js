@@ -9,6 +9,7 @@ import Home from './Home'
 import themes from './components/themes/themes.vue'
 
 import routes from './routers'
+import store from './store/store.js'
 
 import axios from 'axios'
 Vue.prototype.$http = axios
@@ -55,10 +56,20 @@ const router = new VueRouter({
   routes
 })
 
+router.beforeEach(function (to, from, next) {
+  store.commit('updateLoadingStatus', {isLoading: true})
+  next()
+})
+
+router.afterEach(function (to) {
+  store.commit('updateLoadingStatus', {isLoading: false})
+})
+
 FastClick.attach(document.body)
 
 /* eslint-disable no-new */
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')
