@@ -2,28 +2,8 @@
   <div>
   <div class="picSlider">
     <swiper :options="picSliderOption">
-      <swiper-slide>
-        <img data-src="http://cdn.gousa.cn/sites/default/files/styles/original_with_watermark/public/kennedy_meadows_0.jpg" class="swiper-lazy">
-        <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-      </swiper-slide>
-      <swiper-slide>
-        <img data-src="http://cdn.gousa.cn/sites/default/files/styles/original_with_watermark/public/three_sisters_wilderness_0.jpg" class="swiper-lazy">
-        <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-      </swiper-slide>
-      <swiper-slide>
-        <img data-src="http://cdn.gousa.cn/sites/default/files/styles/original_with_watermark/public/snoqualmie_pass_0.jpg" class="swiper-lazy">
-        <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-      </swiper-slide>
-      <swiper-slide>
-        <img data-src="http://cdn.gousa.cn/sites/default/files/styles/original_with_watermark/public/mount_rainier.jpg" class="swiper-lazy">
-        <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-      </swiper-slide>
-      <swiper-slide>
-        <img data-src="http://cdn.gousa.cn/sites/default/files/styles/original_with_watermark/public/yosemite_national_park_0.jpg" class="swiper-lazy">
-        <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-      </swiper-slide>
-      <swiper-slide>
-        <img data-src="https://avatars3.githubusercontent.com/u/14019524?v=3&s=466" class="swiper-lazy">
+      <swiper-slide v-for="src in srcArr">
+        <img :data-src="src" class="swiper-lazy">
         <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
       </swiper-slide>
        <!-- <div class="swiper-pagination" slot="pagination"></div> -->
@@ -65,6 +45,12 @@ export default {
   },
   components: {
     heart,
+  },
+  props : {
+    srcArr : {
+      type : Array,
+      required: true,
+    }
   }
 }
 </script>

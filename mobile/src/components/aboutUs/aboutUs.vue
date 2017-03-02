@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="aboutUs">
-    <myXHeader header="关于我们"></myXHeader>
+    <myXHeader header="关于我们" :showQa="showQa"></myXHeader>
     <div class="text">
       <div class="textImg">
       </div>
@@ -36,7 +36,7 @@ export default {
   name: 'aboutUs',
   data () {
     return {
-
+      showQa: false,
     }
   },
   components: {

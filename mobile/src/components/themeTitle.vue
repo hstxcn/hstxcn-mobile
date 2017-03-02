@@ -4,7 +4,7 @@
       <span class="pticon-fangkuai"></span>{{myTitle}}
     </div>
       <router-link :to="linkTo">
-    <div class="themeTitleRight">
+    <div v-if="notPhx" class="themeTitleRight">
 
       <mu-flat-button v-bind:class="{buttonStyle: isActive}"  :labelClass="{labelStyle: isActive}">
         MORE <span class="pticon-errow-right"></span>
@@ -33,6 +33,10 @@ export default {
     },
     linkTo: {
       type: String,
+      required: true,
+    },
+    notPhx: {
+      type: Boolean,
       required: true,
     }
   },

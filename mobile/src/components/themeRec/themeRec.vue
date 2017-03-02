@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-  <themeTitle :my-title="themeRecTitle" linkTo="themes"></themeTitle>
+  <themeTitle :my-title="themeRecTitle" linkTo="themes" :notPhx="notPhx"></themeTitle>
     <div v-for="item in list">
       <masker color="34,38,44">
         <div class="m-img" :style="{backgroundImage: 'url(' + item.img + ')'}"></div>
@@ -24,6 +24,7 @@ export default {
   name: "themeRec",
   data: function () {
     return {
+      notPhx: true,
       themeRecTitle : "主题推荐",
       list: [{
         title: '毕 业 季',

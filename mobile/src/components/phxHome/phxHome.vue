@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="phxHome">
-    <myXHeader header="摄影师主页"></myXHeader>
+    <myXHeader header="摄影师主页" :showQa="showQa"></myXHeader>
     <div class="phxHomeInfo">
       <div class="phxBg">
         <img :src="phxBg" alt="">
@@ -15,9 +15,11 @@
           <div class="pticon-heartA heart"></div>
           <div class="Num">{{zanTotal}}</div>
         </div>
+        <router-link to="/details">
         <div class="phxBtnRight">
           私洽
         </div>
+        </router-link>
       </div>
       <div class="tags">
         <div class="tagLogo"><img src="./tagicon.svg" alt=""></div>
@@ -27,10 +29,13 @@
       </div>
     </div>
     <homeGap  v-bind:style="gapStyle"></homeGap>
+    <themeTitle :my-title="phxHomeTitle" linkTo="themes" :notPhx="notPhx"></themeTitle>
+
     <div class="photos">
       <picShow></picShow>
 
     </div>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -41,7 +46,7 @@ import phxBg from './bg01.jpg'
 import homeGap from '../homeGap.vue'
 import myXHeader from '../myXHeader.vue'
 import picShow from './picShow.vue'
-
+import themeTitle from "../themeTitle.vue"
 
 export default {
   name: "phxHome",
@@ -52,6 +57,7 @@ export default {
       backgroundColor: "#eceff1",
     };
     return {
+      showQa:true,
       isActive:true,
       phxAvatar,
       phxBg,
@@ -60,12 +66,15 @@ export default {
       zanTotal,
       tags,
       gapStyle,
+      phxHomeTitle: "作品集",
+      notPhx: false,
     }
   },
   components:{
     homeGap,
     myXHeader,
     picShow,
+    themeTitle,
   }
 }
 </script>

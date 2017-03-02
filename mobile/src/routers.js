@@ -42,6 +42,24 @@
    component: function(resolve) {
      require(['./components/phxHome/phxHome.vue'], resolve)
    }
+ },{
+   path: '/details',
+   name: 'deatails',
+   component: function(resolve) {
+     require(['./components/phxHome/phxDetails.vue'], resolve)
+   }
+ },{
+   path: '/step',
+   name: 'step',
+   component: function(resolve) {
+     require(['./components/stepFlow/stepFlow.vue'], resolve)
+   }
+ },{
+   path: '/ques',
+   name: 'ques',
+   component: function(resolve) {
+     require(['./components/ques/ques.vue'], resolve)
+   }
  }
  ]
 export default routers;

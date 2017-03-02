@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="themes">
-  <myXHeader header="主题推荐"></myXHeader>
+  <myXHeader header="主题推荐" :showQa = "show"></myXHeader>
   <div v-for="item in list">
     <masker color="34,38,44">
       <div class="m-img" :style="{backgroundImage: 'url(' + item.img + ')'}"></div>
@@ -24,6 +24,7 @@ export default {
   name: 'themes',
   data (){
     return {
+      show : true,
       list: [{
         title: '毕 业 季',
         img: 'https://cdn.xiaotaojiang.com/uploads/82/1572ec37969ee263735262dc017975/_.jpg',

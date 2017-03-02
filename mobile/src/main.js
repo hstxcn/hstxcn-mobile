@@ -10,10 +10,14 @@ import themes from './components/themes/themes.vue'
 
 import routes from './routers'
 
+import axios from 'axios'
+Vue.prototype.$http = axios
 
 import 'muse-components/styles/base.less' // 加载基础的样式
 import flatButton from 'muse-components/flatButton'
 Vue.component(flatButton.name, flatButton)
+import raisedButton from 'muse-components/raisedButton'
+Vue.component(raisedButton.name, raisedButton)
 import iconButton from 'muse-components/iconButton'
 Vue.component(iconButton.name, iconButton)
 import avatar from 'muse-components/avatar'
@@ -28,6 +32,16 @@ import menu from 'muse-components/menu/menu'
 Vue.component(menu.name, menu)
 import menuItem from 'muse-components/menu/menuItem'
 Vue.component(menuItem.name, menuItem)
+import dialog from 'muse-components/dialog'
+Vue.component(dialog.name, dialog)
+import stepper from 'muse-components/stepper/stepper'
+Vue.component(stepper.name, stepper)
+import step from 'muse-components/stepper/step'
+Vue.component(step.name, step)
+import stepContent from 'muse-components/stepper/stepContent'
+Vue.component(stepContent.name, stepContent)
+import stepLabel from 'muse-components/stepper/stepLabel'
+Vue.component(stepLabel.name, stepLabel)
 
 
 hotcss.designWidth = 1080;

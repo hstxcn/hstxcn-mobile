@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="bonus">
-    <myXHeader header="打赏我们"></myXHeader>
+    <myXHeader header="打赏我们" :showQa="showQa"></myXHeader>
     <div class="text">
       <p>1. 友拍认为，在这个人人都是摄影师的时代，每个人都是独一无二的美的存在，我们怀揣着将这些美和记忆记录下来的理想，打造了友拍平台。
 </p>
@@ -19,6 +19,7 @@ export default {
   name: 'bonus',
   data () {
     return{
+      showQa:false,
       qrcode,
     }
 

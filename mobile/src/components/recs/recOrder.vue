@@ -81,7 +81,7 @@ export default {
 
 <style lang="scss">
 @import "static/px2rem.scss";
-.recOrder {
+
     .mu-flat-button {
         width: 100%;
         height: px2rem(132);
@@ -96,11 +96,13 @@ export default {
     .mu-menu{
       .mu-menu-list{
         .mu-menu-item-wrapper{
-          font-size: d2rem(10);
-
+          font-size: d2rem(8);
+          text-align: center;
           .mu-menu-item{
             .mu-menu-item-title{
-              font-size: d2rem(10);
+              margin: 0 auto;
+              font-size: d2rem(8);
+              text-align: center;
             }
           }
         }
@@ -119,5 +121,5 @@ export default {
         }
     }
 
-}
+
 </style>
