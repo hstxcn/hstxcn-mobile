@@ -33,4 +33,21 @@ export default {
 @import '~vux/src/styles/reset.less';
 @import '~vux/src/styles/1px.less';
 @import '~vux/src/styles/center.less';
+
+.weui_loading_toast{
+  font-size:48px !important;
+}
+.weui_loading_toast .weui_toast_content{
+  font-size:48px !important;
+}
+.weui-icon_toast.weui-loading {
+  margin: 120px 0 0 !important;
+  width: 152px !important;
+  height: 152px !important;
+  vertical-align: baseline;
+  color:red;
+}
+.weui_loading_toast .weui_toast_content {
+  margin-top: 0!important;
+}
 </style>

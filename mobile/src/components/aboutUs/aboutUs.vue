@@ -24,7 +24,13 @@
       <p class="title">友拍能为你做什么:</p>
       <p class="nText">友拍筛选并集结了众多不同风格的优秀校园学生摄影师，满足个人、集体和航拍的众多需求，
       用最实惠的价格找到最适合你的摄影师，得到最让你满意的照片集，留下你最珍贵的回忆。</p>
-
+      <p class="title">友拍制作团队:</p>
+      <p class="nText mid">华中科技大学联创团队</p>
+      <p class="title">联系我们:</p>
+      <p class="nText mid">邮件：youpaihust@163.com</p>
+      <p class="nText mid">微信公众号：youpaihust</p>
+      <p class="nText mid">电话：18986888887</p>
+      <br/><br/><br/><br/><br/><br/>
     </div>
   </div>
 </template>
@@ -71,8 +77,11 @@ export default {
     margin-top: px2rem(40);
   }
   p.nText{
-    margin: px2rem(60) px2rem(154) 0 px2rem(154);
+    margin: px2rem(20) px2rem(154) 0 px2rem(154);
     text-align: left;
+  }
+  p.mid{
+    text-align: center;
   }
 }
 </style>

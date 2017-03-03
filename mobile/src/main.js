@@ -43,6 +43,11 @@ import stepContent from 'muse-components/stepper/stepContent'
 Vue.component(stepContent.name, stepContent)
 import stepLabel from 'muse-components/stepper/stepLabel'
 Vue.component(stepLabel.name, stepLabel)
+import infiniteScroll from 'muse-components/infiniteScroll'
+Vue.component(infiniteScroll.name, infiniteScroll)
+import divider from 'muse-components/divider'
+Vue.component(divider.name, divider)
+
 
 
 hotcss.designWidth = 1080;

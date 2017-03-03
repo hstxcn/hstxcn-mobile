@@ -13,8 +13,9 @@
     <mu-popover :trigger="trigger3" :open="open3" @close="handleClose3" :anchorOrigin="anchorOrigin">
       <mu-menu>
         <mu-menu-item title="约拍流程" @click="toStep" />
-
         <mu-menu-item title="常见问题" @click="toQues"/>
+        <mu-divider />
+        <mu-menu-item title="返回首页" @click="toHome"/>
       </mu-menu>
     </mu-popover>
   </div>
@@ -67,6 +68,10 @@ export default {
     toQues () {
       this.open3 = false;
       this.$root.$router.push('ques');
+    },
+    toHome () {
+      this.open3 = false;
+      this.$root.$router.push('/');
     }
   }
 }

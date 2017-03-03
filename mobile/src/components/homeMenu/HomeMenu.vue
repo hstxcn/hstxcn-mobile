@@ -3,7 +3,7 @@
     <circle-menu type='top' :number='4' circle mask="white" :colors="colors">
       <mu-float-button class='homeMenuBtn' v-bind:class="[clicked?btnClicked:btnNone]" slot="item_btn" @click="changeBg"/>
       <div class="homeMenuItem" slot="item_1" @click="toRecs">我要约拍</div>
-      <div class="homeMenuItem" slot="item_2">摄影师入驻</div>
+      <div class="homeMenuItem" slot="item_2" @click="toHrPhx">摄影师入驻</div>
       <div class="homeMenuItem" slot="item_3" @click="toAboutUs">关于我们</div>
       <div class="homeMenuItem" slot="item_4" @click="toBonus">打赏我们</div>
     </circle-menu>
@@ -33,6 +33,9 @@ export default {
     },
     toBonus () {
       this.$root.$router.push('bonus');
+    },
+    toHrPhx () {
+      this.$root.$router.push('hrphx');
     },
     toAboutUs () {
       this.$root.$router.push('aboutUs');

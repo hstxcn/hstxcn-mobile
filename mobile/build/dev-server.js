@@ -15,21 +15,6 @@ var port = process.env.PORT || config.dev.port
 var proxyTable = config.dev.proxyTable
 
 var app = express()
-var appData = require('../data.json');
-var homeSwiper = appData.homeSwiper;
-
-
-var apiRoutes = express.Router();
-
-apiRoutes.get('/homeSwiper', function (req, res) {
-	res.json({
-		errno: 0,
-		srcArr: homeSwiper,
-	});
-});
-
-app.use('/api', apiRoutes);
-
 
 var compiler = webpack(webpackConfig)
 

@@ -32,8 +32,9 @@ export default {
     }
   },
   created () {
-    this.$http.get('/api/homeSwiper').then((res)=>{
-      this.srcArr=res.data.srcArr;
+    this.$http.get('/home/banner').then((res)=>{
+      // this.srcArr=res.data.srcArr;
+      console.log(res.data);
     }).catch((error) => {
     console.log(error);
   });

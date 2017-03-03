@@ -17,7 +17,7 @@
   <div class="phxSlider">
     <swiper :options="phxSliderOption">
       <swiper-slide v-for="src in srcArr">
-        <img data-src="src" class="swiper-lazy">
+        <img :data-src="src" class="swiper-lazy">
         <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
       </swiper-slide>
        <!-- <div class="swiper-pagination" slot="pagination"></div> -->

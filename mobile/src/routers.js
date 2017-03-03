@@ -10,6 +10,7 @@
 
  const routers = [{
    path: '/',
+   name: 'home',
    component: function(resolve) {
      require(['./Home.vue'], resolve)
    }
@@ -59,6 +60,12 @@
    name: 'ques',
    component: function(resolve) {
      require(['./components/ques/ques.vue'], resolve)
+   }
+ },{
+   path: '/hrphx',
+   name: 'hrphx',
+   component: function(resolve) {
+     require(['./components/phxIn/phxIn.vue'], resolve)
    }
  }
  ]
