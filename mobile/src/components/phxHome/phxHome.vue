@@ -15,7 +15,7 @@
           <div class="pticon-heartA heart"></div>
           <div class="Num">{{zanTotal}}</div>
         </div>
-        <router-link to="/details">
+        <router-link :to="detailUrl">
         <div class="phxBtnRight">
           私洽
         </div>
@@ -32,8 +32,7 @@
     <themeTitle :my-title="phxHomeTitle" linkTo="themes" :notPhx="notPhx"></themeTitle>
 
     <div class="photos">
-      <picShow></picShow>
-
+      <picShow :phxId="phxId"></picShow>
     </div>
     <router-view></router-view>
   </div>
@@ -56,6 +55,7 @@ export default {
     var gapStyle = {
       backgroundColor: "#eceff1",
     };
+    let phxId='';
     return {
       showQa:true,
       isActive:true,
@@ -68,6 +68,8 @@ export default {
       gapStyle,
       phxHomeTitle: "作品集",
       notPhx: false,
+      phxId,
+      detailUrl: '',
     }
   },
   components:{
@@ -75,7 +77,19 @@ export default {
     myXHeader,
     picShow,
     themeTitle,
-  }
+  },
+  created () {
+    // console.log(this.$route.params.id);
+    this.phxId = this.$route.params.id;
+    let phxUrl = '/api/photographer/'+this.$route.params.id;
+    this.detailUrl = '/details/'+this.$route.params.id;
+    this.$http.get(phxUrl).then((res)=>{
+      this.phxName = res.data.name;
+      this.phxInfo = res.data.description;
+      this.tags = res.data.tags;
+      this.zanTotal = res.data.likes;
+    })
+  },
 }
 </script>
 
@@ -175,7 +189,7 @@ export default {
       .tagContents{
         margin-left: px2rem(268);
         width: px2rem(812);
-
+        min-height: px2rem(50);
         .chipTag{
 
           border: px2rem(1) solid #343844;

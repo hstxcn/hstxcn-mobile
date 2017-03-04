@@ -9,67 +9,82 @@
     <a class="play-pause"></a>
     <ol class="indicator"></ol>
   </div>
-  <div class="galCnt">
-    第一集
-  </div>
-  <div id="links" class="links">
-    <flexbox :gutter="0" wrap="wrap">
-      <flexbox-item :span="1/3"><a href="http://cdn.gousa.cn/sites/default/files/styles/original_with_watermark/public/kennedy_meadows_0.jpg" title="Banana">
-        <img src="https://farm1.static.flickr.com/781/32214300143_e2ea16927a_s.jpg" alt="Banana">
-      </a>
-    </flexbox-item>
-      <flexbox-item :span="1/3"><a href="http://cdn.gousa.cn/sites/default/files/styles/original_with_watermark/public/kennedy_meadows_0.jpg" title="Apple">
-        <img src="https://farm1.static.flickr.com/781/32214300143_e2ea16927a_s.jpg" alt="Banana">
-      </a>
-    </flexbox-item>
-      <flexbox-item :span="1/3"><a href="http://cdn.gousa.cn/sites/default/files/styles/original_with_watermark/public/kennedy_meadows_0.jpg" title="Orange">
-        <img :src="bg01" alt="Banana">
-      </a>
-    </flexbox-item>
-    </flexbox>
 
+  <picNails v-for="colInfo in colArr" :colInfo="colInfo"></picNails>
 
-
-</div>
 
 </div>
 </template>
 
 <script>
-import Gallery from 'blueimp-gallery/js/blueimp-gallery.min.js';
 import bg01 from './phxAvatar.png'
-import {
-  Flexbox,
-  FlexboxItem
-} from 'vux'
+
+
+
+import picNails from './picNails.vue'
 
 export default {
   name: "picShow",
   data() {
+    let colArr = [];
     return {
       bg01,
+      colArr,
     }
   },
-  mounted() {
-    this.$nextTick(function() {
-      document.getElementById('links').onclick = function(event) {
-        event = event || window.event;
-        var target = event.target || event.srcElement,
-          link = target.src ? target.parentNode : target,
-          options = {
-            index: link,
-            event: event,
-            stretchImages: true,
-          },
-          links = this.getElementsByTagName('a');
-        Gallery(links, options);
-      };
+  created () {
+    let colUrl = '/api/photographer/'+this.phxId+'/collection';
 
-    })
+    let colArr = [];
+    this.$http.get(colUrl).then((res)=>{
+      // console.log(res);
+      let x,y;
+      for(x in res.data){
+        // console.log(x);
+        let colObj = {
+          images: [],
+          phxName: '',
+        };
+        for(y in res.data[x].images){
+          let imgObj = {
+            croped_path: '',
+            compressed_path: '',
+          };
+          // console.log(y);
+          // console.log(res.data[x].images[y].croped_path)
+          imgObj.croped_path=res.data[x].images[y].croped_path;
+          // console.log(imgObj.croped_path)
+          imgObj.compressed_path=res.data[x].images[y].compressed_path;
+          imgObj.path=res.data[x].images[y].path;
+          // console.log(imgObj);
+          colObj.images.push(imgObj);
+
+          // console.log('this is img');
+          // console.log(colObj.images[1]);
+          // console.log('y:'+y);
+          }
+          // console.log(JSON.stringify(colObj.images));
+          colObj.phxName=res.data[x].photographer.name;
+          colArr.push(colObj);
+          // console.log(colObj);
+          // console.log('x:'+x);
+        }
+        this.colArr=colArr;
+        // console.log(colArr);
+        // let str = JSON.stringify(this.colArr);
+        // console.log(str);
+      }
+    )
   },
+
   components: {
-    Flexbox,
-    FlexboxItem,
+    picNails,
+  },
+  props: {
+    phxId: {
+      type: String,
+      required: true,
+    },
   }
 
 }
@@ -79,36 +94,6 @@ export default {
 @import '../../../node_modules/blueimp-gallery/css/blueimp-gallery.min.css';
 .picShow {
     position: relative;
-    .links {
-        text-align: center;
-        width: px2rem(855);
-        // height: px2rem(855);
-        // border: 1px solid #f00;
-        float: right;
-        margin: px2rem(32);
-        a {
-            text-align: center;
-            height: px2rem(264);
-            display: block;
-            margin: px2rem(10);
-            // border: 1px solid #f00;
-            img {
-                border: 0;
-                vertical-align: middle;
-                width: 100%;
-                height: 100%;
-            }
-
-        }
-    }
-
-    .galCnt{
-      position: absolute;
-      font-size: d2rem(10);
-      color: #343844;
-      top:px2rem(152);
-      left: px2rem(42);
-    }
 
     .blueimp-gallery > .indicator > li {
         width: px2rem(30);

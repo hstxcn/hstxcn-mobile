@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="heart">
     <mu-flat-button :label="zanNum|toString" @click="zan" :class="{heartBtn:isActive}" :labelClass="{labelStyle: isActive}">
-      <i v-bind:class="[red?pticonHeartB:pticonHeartA]"></i>
+    <i v-bind:class="[red?pticonHeartB:pticonHeartA]"></i>
     </mu-flat-button>
   </div>
 </template>
@@ -11,9 +11,9 @@ export default {
   name: "heart",
   data: function(){
     return {
+      zanNum:0,
       isActive:true,
       red: true,
-      zanNum: 233,
       pticonHeartB: 'pticon-heartB',
       pticonHeartA: 'pticon-heartA',
     }
@@ -30,6 +30,31 @@ export default {
   },
   filters: {
     toString: (n)=> n.toString(),
+  },
+  created () {
+    let url = null;
+    if(this.colLikesId){
+       url = '/api/collection/'+this.colLikesId;
+    }
+    if(this.phxLikesId){
+       url = '/api/photographer/'+this.phxLikesId;
+    }
+  if(url){
+    this.$http.get(url).then((res)=>{
+      this.zanNum = res.data.likes;
+    })
+  }
+
+  },
+  props : {
+    colLikesId: {
+      type: String,
+      required: false,
+    },
+    phxLikesId: {
+      type: String,
+      required: false,
+    }
   }
 }
 </script>

@@ -11,9 +11,9 @@
      </swiper>
   </div>
   <div class="picRecInfo">
-    <div class="infoLeft"><span class="phx">摄影师</span> | <span>模特</span> | <span>后期</span> | <span>时间</span></div>
+    <div class="infoLeft"><span class="phx">摄影师:{{phxName}}</span> | <span>出镜:{{model}}</span></div>
     <div class="infoRight">
-      <heart></heart>
+      <heart :colLikesId="colId"></heart>
     </div>
   </div>
   </div>
@@ -50,6 +50,17 @@ export default {
     srcArr : {
       type : Array,
       required: true,
+    },
+    phxName:{
+      type: String,
+      required:true,
+    },
+    model:{
+      type: String,
+      required:true,
+    },
+    colId:{
+      type: String,
     }
   }
 }

@@ -16,3 +16,7 @@ npm run build
 ```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+
+###图片裁剪有要求
+首页推荐的图片必须按照比例裁剪

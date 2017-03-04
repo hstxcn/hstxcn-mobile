@@ -1,11 +1,13 @@
 <template lang="html">
   <div class="phxDetails">
     <myXHeader header="摄影师详情" :showQa="showQa"></myXHeader>
+    <p class="title1">摄影师姓名：</p>
+    <p class="name">{{name}}</p>
     <p class="title1">摄影师编号：</p>
-    <p class="titleNum">007</p>
+    <p class="titleNum">{{number}}</p>
     <p class="scan">扫描下方二维码</p>
     <p>关注友拍微信公众号</p>
-    <p class="way"><span class="em">回复</span>摄影师编号</p>
+    <p class="way"><span class="em">回复</span>摄影师姓名或编号</p>
     <p><span class="em">获得</span>该摄影师的联系方式</p>
     <div class="qrcode"><img :src="qrcode" alt=""></div>
     <mu-dialog :open="dialog" title="私洽提示" @close="close" :titleClass="myDialog">
@@ -25,6 +27,8 @@ export default {
       qrcode,
       dialog: true,
       myDialog: 'my-mu-dialog',
+      name: '',
+      number: 0,
     }
   },
   components: {
@@ -37,6 +41,14 @@ export default {
     close() {
       this.dialog = false
     },
+  },
+  created () {
+    let phxUrl = '/api/photographer/'+this.$route.params.phxId;
+    this.$http.get(phxUrl).then((res)=>{
+      this.number=res.data.number;
+      this.name=res.data.name;
+    })
+
   }
 }
 </script>
@@ -87,6 +99,10 @@ export default {
     }
     p.way {
         margin-top: px2rem(84);
+    }
+    p.name{
+      margin-top: px2rem(50);
+      font-size: d2rem(10);
     }
     .qrcode {
         width: px2rem(470);

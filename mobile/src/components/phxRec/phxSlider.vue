@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="phxSliderWap">
     <div class="phxRecInfo">
-      <router-link to="phx">
+      <router-link :to="phxUrl">
       <div class="infoLeft">
         <mu-avatar slot="left" :src="phxAvatar" :class="{avaStyle: isActive}"/>
         <div class="phxBtn">
@@ -11,13 +11,13 @@
       </div>
       </router-link>
       <div class="infoRight">
-        <heart></heart>
+        <heart :phxLikesId="phxId"></heart>
       </div>
     </div>
   <div class="phxSlider">
     <swiper :options="phxSliderOption">
       <swiper-slide v-for="src in srcArr">
-        <img :data-src="src" class="swiper-lazy">
+        <img :data-src="src.compressed_path" class="swiper-lazy">
         <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
       </swiper-slide>
        <!-- <div class="swiper-pagination" slot="pagination"></div> -->
@@ -35,10 +35,11 @@ export default {
   name: "phxSlider",
   data() {
     let avatarSize = 50;
+    let phxUrl = 'phx/'+this.phxId;
     return {
       isActive : true,
+      phxUrl,
       phxAvatar,
-      phxName: "摄影师名字",
       avatarSize,
       phxSliderOption: {
         // pagination: '.swiper-pagination',
@@ -64,7 +65,15 @@ export default {
   props : {
     srcArr : {
       type : Array,
-      required : true,
+      required: true,
+    },
+    phxName:{
+      type: String,
+      required:true,
+    },
+    phxId:{
+      type: String,
+      required:true,
     }
   }
 }

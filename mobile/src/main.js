@@ -14,6 +14,9 @@ import store from './store/store.js'
 import axios from 'axios'
 Vue.prototype.$http = axios
 
+import VueLazyload from 'vue-lazyload'
+Vue.use(VueLazyload);
+
 import 'muse-components/styles/base.less' // 加载基础的样式
 import flatButton from 'muse-components/flatButton'
 Vue.component(flatButton.name, flatButton)

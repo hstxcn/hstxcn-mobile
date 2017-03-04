@@ -32,9 +32,17 @@ export default {
     }
   },
   created () {
-    this.$http.get('/home/banner').then((res)=>{
+    this.$http.get('/api/home/banner').then((res)=>{
       // this.srcArr=res.data.srcArr;
-      console.log(res.data);
+      // console.log(res.data);
+      let coverArr = new Array();
+      let x;
+      for(x in res.data){
+        coverArr.push(res.data[x].cover.compressed_path);
+      };
+      // console.log(coverArr);
+      this.srcArr = coverArr;
+
     }).catch((error) => {
     console.log(error);
   });

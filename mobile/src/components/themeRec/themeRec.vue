@@ -23,24 +23,33 @@ import homeGap from "../homeGap.vue"
 export default {
   name: "themeRec",
   data: function () {
+    let list = new Array();
     return {
       notPhx: true,
       themeRecTitle : "主题推荐",
-      list: [{
-        title: '毕 业 季',
-        img: 'https://cdn.xiaotaojiang.com/uploads/82/1572ec37969ee263735262dc017975/_.jpg',
-        pinyin: 'bì yè jì'
-      }, {
-        title: '街 拍',
-        img: 'https://cdn.xiaotaojiang.com/uploads/59/b22e0e62363a4a652f28630b3233b9/_.jpg',
-        pinyin: 'jiē pāi'
-      }, {
-        title: '闺 蜜',
-        img: 'https://cdn.xiaotaojiang.com/uploads/56/4b3601364b86fdfd234ef11d8712ad/_.jpg',
-        pinyin: 'guī mì'
-      }],
+      list,
       isActive: true,
     }
+  },
+  created () {
+    this.$http.get('/api/theme').then((res)=>{
+      let x;
+      let coverObj={
+        title: '',
+        img: '',
+        pinyin: '',
+      };
+      let list = new Array();
+
+      for(x in res.data){
+        let name = res.data[x].name.split(' ');
+        coverObj.title=name[0];
+        coverObj.pinyin=name.slice(1).toString().replace(',',' ');
+        coverObj.img=res.data[x].cover.compressed_path;
+        list.push(coverObj);
+      };
+      this.list=list;
+    })
   },
   components: {
     themeTitle,

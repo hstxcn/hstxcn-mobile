@@ -38,13 +38,13 @@
      require(['./components/aboutUs/aboutUs.vue'], resolve)
    }
  },{
-   path: '/phx',
+   path: '/phx/:id',
    name: 'phx',
    component: function(resolve) {
      require(['./components/phxHome/phxHome.vue'], resolve)
    }
  },{
-   path: '/details',
+   path: '/details/:phxId',
    name: 'deatails',
    component: function(resolve) {
      require(['./components/phxHome/phxDetails.vue'], resolve)

@@ -2,7 +2,8 @@
   <div class="recs">
     <myXHeader header="推荐" :showQa="showQa"></myXHeader>
     <recOrder></recOrder>
-    <phxSlider v-for="srcArr in srcArrs" :srcArr="srcArr"></phxSlider>
+    <phxSlider v-for="phxInfo in phxInfos" :srcArr="phxInfo.srcArr"
+      :phxName="phxInfo.phxName" :phxId="phxInfo.phxId"></phxSlider>
     <mu-infinite-scroll :scroller="scroller" :loading="loading" :loadingText="loadingText" @load="loadMore"/>
   </div>
 </template>
@@ -15,21 +16,42 @@ import phxSlider from '../phxRec/phxSlider.vue'
 export default {
   name: "recs",
   data () {
-    let link = 'http://cdn.gousa.cn/sites/default/files/styles/original_with_watermark/public/kennedy_meadows_0.jpg';
-    let srcArr = [link,link,link,link,link];
-    let srcArrs = [srcArr,srcArr,srcArr,srcArr,srcArr];
     let loadingText = '正在加载';
     return {
       showQa : true,
-      srcArr,
-      srcArrs,
+      phxInfos:[],
       loading: false,
       scroller: null,
       loadingText,
     }
   },
+  created () {
+    let phxsUrl = '/api/photographer'
+    this.$http.get(phxsUrl).then((res)=>{
+
+      let x;
+      let phxInfos=[];
+      for(x in res.data){
+        let phxInfo = {
+          srcArr: [],
+          phxName: '',
+          phxId: '',
+        };
+        console.log(JSON.stringify(res.data[x].collection))
+        let tc = res.data[x].collection;
+        if(tc){
+          phxInfo.srcArr=res.data[x].collection.images;
+        }
+        phxInfo.phxName=res.data[x].name;
+        phxInfo.phxId=res.data[x].id;
+        phxInfos.push(phxInfo);
+      }
+      this.phxInfos=phxInfos;
+
+    })
+  },
   mounted () {
-    
+
   },
   components: {
     myXHeader,
@@ -39,13 +61,8 @@ export default {
   methods: {
     loadMore () {
       this.loading = true;
-      console.log('log');
-      setTimeout(() => {
-        for (let i = 0; i < 5; i++) {
-          this.srcArrs.push(this.srcArr)
-        }
-        this.loading = false
-      }, 2000)
+
+
     }
   }
 }
