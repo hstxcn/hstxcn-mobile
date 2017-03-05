@@ -37,7 +37,7 @@ export default {
           phxName: '',
           phxId: '',
         };
-        console.log(JSON.stringify(res.data[x].collection))
+        // console.log(JSON.stringify(res.data[x].collection))
         let tc = res.data[x].collection;
         if(tc){
           phxInfo.srcArr=res.data[x].collection.images;
@@ -46,6 +46,7 @@ export default {
         phxInfo.phxId=res.data[x].id;
         phxInfos.push(phxInfo);
       }
+      // console.log(JSON.stringify(phxInfos));
       this.phxInfos=phxInfos;
 
     })

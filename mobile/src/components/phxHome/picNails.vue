@@ -1,12 +1,12 @@
 <template lang="html">
   <div class="picNails clearfix">
           <div class="galCnt">
-            第一集
+            第{{index|indexToWord}}集
           </div>
           <div ref="link" class="links">
             <flexbox :gutter="0" wrap="wrap">
               <flexbox-item v-for="imgs in colInfo.images" :span="1/3">
-                <a :href="imgs.path" title="">
+                <a :href="imgs.compressed_path" :title="imgTitle">
                   <img :src="imgs.croped_path" alt="Banana">
                 </a>
               </flexbox-item>
@@ -24,13 +24,30 @@ import {
 
 export default {
   name: 'picNails',
+  data () {
+    return {
+        imgTitle:'',
+    }
+  },
   props : {
     colInfo:{
       type: Object,
       required: true,
+    },
+    index:{
+      type: Number,
+      required: true,
+    }
+  },
+  filters: {
+    indexToWord : (n)=>{
+      let numArr=['一','二','三','四','五','六','七','八','九','十','十一','十二',
+      '十三','十四','十五','十六','十七','十八','十九','二十'];
+      return numArr[n];
     }
   },
   mounted() {
+    this.imgTitle='要约拍,来友拍。--'+this.colInfo.phxName;
     this.$nextTick(function() {
       // console.log(this.$refs);
     this.$refs.link.onclick = function(event) {
@@ -41,6 +58,7 @@ export default {
             index: link,
             event: event,
             fullScreen: true,
+            slideshowInterval: 3000,
           },
           links = this.getElementsByTagName('a');
         Gallery(links, options);
@@ -71,7 +89,7 @@ visibility: hidden;
       // height: px2rem(855);
       // border: 1px solid #f00;
       float: right;
-      margin: px2rem(32);
+      margin: px2rem(32) px2rem(32) px2rem(32) 0;
       display: inline-block;
       a {
           text-align: center;
@@ -95,6 +113,7 @@ visibility: hidden;
       color: #343844;
       margin-top: px2rem(152);
       margin-left:px2rem(22);
+      margin-right: 0;
   }
 }
 </style>

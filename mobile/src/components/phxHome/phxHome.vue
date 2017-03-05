@@ -24,7 +24,7 @@
       <div class="tags">
         <div class="tagLogo"><img src="./tagicon.svg" alt=""></div>
         <div class="tagContents">
-          <mu-chip v-for="tag in tags" class="chipTag" backgroundColor="#fff">{{tag}}</mu-chip>
+          <mu-chip v-for="tag in tags" class="chipTag" backgroundColor="#fff">{{tag.text}}</mu-chip>
         </div>
       </div>
     </div>
@@ -79,17 +79,27 @@ export default {
     themeTitle,
   },
   created () {
-    // console.log(this.$route.params.id);
     this.phxId = this.$route.params.id;
-    let phxUrl = '/api/photographer/'+this.$route.params.id;
-    this.detailUrl = '/details/'+this.$route.params.id;
-    this.$http.get(phxUrl).then((res)=>{
-      this.phxName = res.data.name;
-      this.phxInfo = res.data.description;
-      this.tags = res.data.tags;
-      this.zanTotal = res.data.likes;
-    })
   },
+  methods : {
+    fetchData () {
+
+      let phxUrl = '/api/photographer/'+this.$route.params.id;
+      this.detailUrl = '/details/'+this.$route.params.id;
+      this.$http.get(phxUrl).then((res)=>{
+        this.phxName = res.data.name;
+        this.phxInfo = res.data.description;
+        this.tags = res.data.tags;
+        this.zanTotal = res.data.likes;
+      })
+    },
+  },
+  activated () {
+    console.log('activated');
+    this.phxId = this.$route.params.id;
+    console.log(this.phxId);
+    this.fetchData();
+  }
 }
 </script>
 

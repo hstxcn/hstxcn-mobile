@@ -41,15 +41,18 @@ export default {
     close() {
       this.dialog = false
     },
+    fetchData(){
+      let phxUrl = '/api/photographer/'+this.$route.params.phxId;
+      this.$http.get(phxUrl).then((res)=>{
+        this.number=res.data.number;
+        this.name=res.data.name;
+      })
+    },
   },
   created () {
-    let phxUrl = '/api/photographer/'+this.$route.params.phxId;
-    this.$http.get(phxUrl).then((res)=>{
-      this.number=res.data.number;
-      this.name=res.data.name;
-    })
-
-  }
+    this.fetchData();
+  },
+  befor
 }
 </script>
 

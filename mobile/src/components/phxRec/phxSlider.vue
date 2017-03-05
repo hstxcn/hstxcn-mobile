@@ -49,7 +49,7 @@ export default {
         // Enable lazy loading
         lazyLoading: true,
         lazyLoadingInPrevNext: true,
-        lazyLoadingInPrevNextAmount: 2,
+        lazyLoadingInPrevNextAmount: 1,
         autoplayDisableOnInteraction: false,
         slidesPerView: 'auto',
         scrollbar: '.swiper-scrollbar',
