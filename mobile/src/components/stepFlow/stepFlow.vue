@@ -67,7 +67,7 @@
 
 <script>
 import myXHeader from "../myXHeader.vue"
-import qrcode from './logo.png'
+import qrcode from './qrcode.jpg'
 export default {
   name: 'stepFlow',
   data () {

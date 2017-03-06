@@ -12,7 +12,11 @@
     <div class="qrcode"><img :src="qrcode" alt=""></div>
     <mu-dialog :open="dialog" title="私洽提示" @close="close" :titleClass="myDialog">
     为保护摄影师个人隐私，摄影师联系方式详询友拍微信公众号。
+
       <mu-flat-button slot="actions" primary @click="close" label="确定"/>
+
+      <mu-flat-button slot="actions" primary @click="once" label="不再提醒"/>
+
     </mu-dialog>
   </div>
 </template>
@@ -29,6 +33,7 @@ export default {
       myDialog: 'my-mu-dialog',
       name: '',
       number: 0,
+      onceFlag: false,
     }
   },
   components: {
@@ -41,6 +46,10 @@ export default {
     close() {
       this.dialog = false
     },
+    once() {
+      this.dialog = false;
+      this.onceFlag = true;
+    },
     fetchData(){
       let phxUrl = '/api/photographer/'+this.$route.params.phxId;
       this.$http.get(phxUrl).then((res)=>{
@@ -49,15 +58,24 @@ export default {
       })
     },
   },
-  created () {
+  activated () {
+    if(!this.onceFlag){
+      this.dialog = true;
+    }
     this.fetchData();
-  },
-  befor
+  }
 }
 </script>
 
 <style lang="scss">
 @import "static/px2rem.scss";
+.mu-dialog-actions{
+  .mu-flat-button{
+    width: 50%;
+    display: inline-block;
+
+  }
+}
 .my-mu-dialog {
     font-size: d2rem(12);
     text-align: center;

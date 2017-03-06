@@ -5,7 +5,7 @@
     {{header}}
     <span slot="right">
       <mu-icon-button ref="button3" @click.stop="toggle3">
-        <span class="qaicon pticon-qa"></span>
+        <span class="qaicon pticon-more_light"></span>
       </mu-icon-button>
     </span>
   </x-header>
@@ -15,6 +15,7 @@
         <mu-menu-item title="约拍流程" @click="toStep" />
         <mu-menu-item title="常见问题" @click="toQues"/>
         <mu-divider />
+        <mu-menu-item title="我要约拍" @click="toRecs"/>
         <mu-menu-item title="返回首页" @click="toHome"/>
       </mu-menu>
     </mu-popover>
@@ -63,11 +64,15 @@ export default {
     },
     toStep () {
       this.open3 = false;
-      this.$root.$router.push('step');
+      this.$root.$router.push('/step');
     },
     toQues () {
       this.open3 = false;
-      this.$root.$router.push('ques');
+      this.$root.$router.push('/ques');
+    },
+    toRecs () {
+      this.open3 = false;
+      this.$root.$router.push('/recs');
     },
     toHome () {
       this.open3 = false;

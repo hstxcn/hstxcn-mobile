@@ -41,7 +41,6 @@
 <script>
 import heart from "../heart.vue"
 import phxAvatar from './phxAvatar.png'
-import phxBg from './bg01.jpg'
 import homeGap from '../homeGap.vue'
 import myXHeader from '../myXHeader.vue'
 import picShow from './picShow.vue'
@@ -56,6 +55,7 @@ export default {
       backgroundColor: "#eceff1",
     };
     let phxId='';
+    let phxBg='';
     return {
       showQa:true,
       isActive:true,
@@ -70,6 +70,19 @@ export default {
       notPhx: false,
       phxId,
       detailUrl: '',
+      srcArr:[],
+      swiperOption: {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        // Disable preloading of all images
+        preloadImages: false,
+        // Enable lazy loading
+        lazyLoading: true,
+        lazyLoadingInPrevNext : true,
+        autoplay: 2500,
+        autoplayDisableOnInteraction: false,
+        loop: true,
+      }
     }
   },
   components:{
@@ -80,6 +93,7 @@ export default {
   },
   created () {
     this.phxId = this.$route.params.id;
+    this.fetchData();
   },
   methods : {
     fetchData () {
@@ -91,21 +105,39 @@ export default {
         this.phxInfo = res.data.description;
         this.tags = res.data.tags;
         this.zanTotal = res.data.likes;
+        if(res.data.avatar.croped_path){
+          this.phxAvatar=res.data.avatar.croped_path;
+        }
+        let x;
+        let srcArr =[];
+        let images = res.data.collection.images;
+        for (x in images){
+            srcArr.push(images[x].compressed_path);
+        }
+        this.srcArr = srcArr;
+        // console.log(this.srcArr);
+        let length = this.srcArr.length;
+        let index = Math.floor((Math.random())*length);
+        this.phxBg=this.srcArr[index];
       })
     },
   },
   activated () {
-    console.log('activated');
+    // console.log('activated');
     this.phxId = this.$route.params.id;
-    console.log(this.phxId);
+    // console.log(this.phxId);
     this.fetchData();
+  },
+  watch:{
+    phxId: function(){
+      this.fetchData();
+    }
   }
 }
 </script>
 
 <style lang="scss">
 @import "static/px2rem.scss";
-
 .phxHome{
   .phxHomeInfo{
     position: relative;
@@ -145,7 +177,7 @@ export default {
       color: #343844;
       text-align: center;
       font-size: d2rem(8);
-      margin-top: px2rem(30);
+      margin: px2rem(30) px2rem(50) 0 px2rem(50);
     }
 
     .phxHomeBtn{

@@ -7,7 +7,7 @@
             <flexbox :gutter="0" wrap="wrap">
               <flexbox-item v-for="imgs in colInfo.images" :span="1/3">
                 <a :href="imgs.compressed_path" :title="imgTitle">
-                  <img :src="imgs.croped_path" alt="Banana">
+                  <img :src="imgs.croped_path" alt="">
                 </a>
               </flexbox-item>
             </flexbox>
@@ -37,13 +37,18 @@ export default {
     index:{
       type: Number,
       required: true,
-    }
+    },
   },
   filters: {
     indexToWord : (n)=>{
       let numArr=['一','二','三','四','五','六','七','八','九','十','十一','十二',
       '十三','十四','十五','十六','十七','十八','十九','二十'];
       return numArr[n];
+    }
+  },
+  watch:{
+    'colInfo': function(){
+      this.imgTitle='要约拍,来友拍。--'+this.colInfo.phxName;
     }
   },
   mounted() {

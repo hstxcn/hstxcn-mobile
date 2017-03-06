@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
-  <themeTitle :my-title="themeRecTitle" linkTo="themes" :notPhx="notPhx"></themeTitle>
-    <div v-for="item in list">
+  <themeTitle :my-title="themeRecTitle" linkTo="/recs" :notPhx="notPhx"></themeTitle>
+    <div v-for="item in list" @click="toRecs">
       <masker color="34,38,44">
         <div class="m-img" :style="{backgroundImage: 'url(' + item.img + ')'}"></div>
         <div slot="content" class="m-title">
@@ -31,20 +31,26 @@ export default {
       isActive: true,
     }
   },
+  methods: {
+    toRecs () {
+      this.$root.$router.push('/recs');
+    }
+  },
   created () {
     this.$http.get('/api/theme').then((res)=>{
       let x;
-      let coverObj={
-        title: '',
-        img: '',
-        pinyin: '',
-      };
+
       let list = new Array();
 
       for(x in res.data){
+        let coverObj={
+          title: '',
+          img: '',
+          pinyin: '',
+        };
         let name = res.data[x].name.split(' ');
         coverObj.title=name[0];
-        coverObj.pinyin=name.slice(1).toString().replace(',',' ');
+        coverObj.pinyin=name.slice(1).join(' ');
         coverObj.img=res.data[x].cover.compressed_path;
         list.push(coverObj);
       };

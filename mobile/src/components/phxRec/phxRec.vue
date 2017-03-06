@@ -2,7 +2,7 @@
   <div>
   <themeTitle :my-title="phxRecTitle" linkTo="recs" :notPhx="notPhx"></themeTitle>
   <phx-slider v-for="Obj in phxRecs" :srcArr="Obj.srcArr"
-  :phxName="Obj.phxName" :phxId="Obj.phxId"></phx-slider>
+  :phxName="Obj.phxName" :phxId="Obj.phxId" :phxAvatar="Obj.phxAvatar"></phx-slider>
   </div>
 </template>
 
@@ -25,20 +25,27 @@ export default {
     phxSlider,
   },
   created () {
-    let phxObj={
-      srcArr: [],
-      phxName: '',
-      phxId: '',
-    };
-    let phxRecs = [];
+
     this.$http.get('/api/home/photographer').then((res)=>{
       let x;
+
+      let phxRecs = [];
       for(x in res.data){
+        let phxObj={
+          srcArr: [],
+          phxName: '',
+          phxId: '',
+          phxAvatar: '',
+        };
         // console.log(phxObj.srcArr);
         phxObj.phxName=res.data[x].name;
         phxObj.phxId=res.data[x].id;
+        phxObj.srcArr=res.data[x].collection.images;
+        if(res.data[x].avatar.compressed_path){
+          phxObj.phxAvatar=res.data[x].avatar.compressed_path;
+        }
         phxRecs.push(phxObj);
-        // phxObj.srcArr=[];
+
       }
 
       this.phxRecs=phxRecs;

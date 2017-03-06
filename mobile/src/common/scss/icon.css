@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'pt-icon';
-  src:  url('../fonts/pt-icon.eot?a5h3zz');
-  src:  url('../fonts/pt-icon.eot?a5h3zz#iefix') format('embedded-opentype'),
-    url('../fonts/pt-icon.ttf?a5h3zz') format('truetype'),
-    url('../fonts/pt-icon.woff?a5h3zz') format('woff'),
-    url('../fonts/pt-icon.svg?a5h3zz#pt-icon') format('svg');
+  src:  url('../fonts/pt-icon.eot?nvwf22');
+  src:  url('../fonts/pt-icon.eot?nvwf22#iefix') format('embedded-opentype'),
+    url('../fonts/pt-icon.ttf?nvwf22') format('truetype'),
+    url('../fonts/pt-icon.woff?nvwf22') format('woff'),
+    url('../fonts/pt-icon.svg?nvwf22#pt-icon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,6 +24,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.pticon-more_light:before {
+  content: "\e915";
+}
 .pticon-fangkuai:before {
   content: "\e914";
 }
@@ -104,3 +107,4 @@
   margin-left: -1em;
   color: rgb(255, 255, 255);
 }
+

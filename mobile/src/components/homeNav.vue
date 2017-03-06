@@ -3,30 +3,30 @@
       <flexbox :gutter="0">
           <flexbox-item>
             <div class="homenav-flex">
-              <mu-icon-button v-bind:class="{homeNavBtn: isActive}">
+              <mu-icon-button @click="toRecs" v-bind:class="{homeNavBtn: isActive}">
                 <span class="homenavicon pticon-hangpai"></span>
               </mu-icon-button>
           </div>
         </flexbox-item>
           <flexbox-item>
             <div class="homenav-flex">
-              <mu-icon-button v-bind:class="{homeNavBtn: isActive}">
+              <mu-icon-button @click="toRecs" v-bind:class="{homeNavBtn: isActive}">
             <span class="homenavicon pticon-single"></span>
           </mu-icon-button>
         </div>
       </flexbox-item>
-          <flexbox-item><div class="homenav-flex"><mu-icon-button v-bind:class="{homeNavBtn: isActive}">
+          <flexbox-item><div class="homenav-flex"><mu-icon-button @click="toRecs" v-bind:class="{homeNavBtn: isActive}">
             <span class="homenavicon pticon-multis"></span>
           </mu-icon-button></div></flexbox-item>
-          <flexbox-item><div class="homenav-flex"><mu-icon-button v-bind:class="{homeNavBtn: isActive}">
+          <flexbox-item><div class="homenav-flex"><mu-icon-button @click="toRecs" v-bind:class="{homeNavBtn: isActive}">
             <span class="homenavicon pticon-team"></span>
           </mu-icon-button></div></flexbox-item>
       </flexbox>
       <flexbox :gutter="0">
-          <flexbox-item><div class="homenav-flex"><div class="homeNavTitle">航拍&360</div></div></flexbox-item>
-          <flexbox-item><div class="homenav-flex"><div class="homeNavTitle">个人</div></div></flexbox-item>
-          <flexbox-item><div class="homenav-flex"><div class="homeNavTitle">多人</div></div></flexbox-item>
-          <flexbox-item><div class="homenav-flex"><div class="homeNavTitle">团体</div></div></flexbox-item>
+          <flexbox-item><div class="homenav-flex"><div class="homeNavTitle" @click="toRecs">航拍&360</div></div></flexbox-item>
+          <flexbox-item><div class="homenav-flex"><div class="homeNavTitle" @click="toRecs">个人</div></div></flexbox-item>
+          <flexbox-item><div class="homenav-flex"><div class="homeNavTitle" @click="toRecs">多人</div></div></flexbox-item>
+          <flexbox-item><div class="homenav-flex"><div class="homeNavTitle" @click="toRecs">团体</div></div></flexbox-item>
       </flexbox>
   </div>
 </template>
@@ -46,6 +46,11 @@ export default {
   components: {
     Flexbox,
     FlexboxItem
+  },
+  methods: {
+    toRecs(){
+      this.$root.$router.push('recs');
+    },
   }
 }
 </script>

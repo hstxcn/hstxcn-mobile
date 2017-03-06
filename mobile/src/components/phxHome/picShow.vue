@@ -71,7 +71,7 @@ export default {
             // console.log('x:'+x);
           }
           this.colArr=colArr;
-          console.log(colArr);
+          // console.log(colArr);
           // let str = JSON.stringify(this.colArr);
           // console.log(str);
         }

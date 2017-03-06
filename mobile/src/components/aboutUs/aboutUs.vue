@@ -26,10 +26,14 @@
       用最实惠的价格找到最适合你的摄影师，得到最让你满意的照片集，留下你最珍贵的回忆。</p>
       <p class="title">友拍制作团队:</p>
       <p class="nText mid">华中科技大学联创团队</p>
+      <p class="nText mid">特别鸣谢：陈国晋，唐明华，徐吉昊，</p>
+      <p class="nText mid">黄铭兴，申澳，聂路,汤跞煜，明煦智，</p>
+      <p class="nText mid">马诗语。排名不分先后。</p>
       <p class="title">联系我们:</p>
       <p class="nText mid">邮件：youpaihust@163.com</p>
       <p class="nText mid">微信公众号：youpaihust</p>
       <p class="nText mid">电话：18986888887</p>
+      <div class="qrcode"><img :src="qrcode" alt=""></div>
       <br/><br/><br/><br/><br/><br/>
     </div>
   </div>
@@ -37,12 +41,13 @@
 
 <script>
 import myXHeader from '../myXHeader.vue'
-
+import qrcode from './qrcode.jpg'
 export default {
   name: 'aboutUs',
   data () {
     return {
       showQa: false,
+      qrcode,
     }
   },
   components: {
@@ -82,6 +87,13 @@ export default {
   }
   p.mid{
     text-align: center;
+  }
+  .qrcode{
+    width: px2rem(470);
+    margin: 0 auto;
+    img{
+      width: 100%;
+    }
   }
 }
 </style>

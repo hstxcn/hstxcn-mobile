@@ -29,7 +29,6 @@
 
 <script>
 import heart from "../heart.vue"
-import phxAvatar from './phxAvatar.png'
 
 export default {
   name: "phxSlider",
@@ -39,7 +38,6 @@ export default {
     return {
       isActive : true,
       phxUrl,
-      phxAvatar,
       avatarSize,
       phxSliderOption: {
         // pagination: '.swiper-pagination',
@@ -74,6 +72,10 @@ export default {
     phxId:{
       type: String,
       required:true,
+    },
+    phxAvatar:{
+      type: String,
+      required: true,
     }
   }
 }

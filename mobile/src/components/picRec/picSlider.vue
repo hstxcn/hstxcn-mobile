@@ -11,7 +11,7 @@
      </swiper>
   </div>
   <div class="picRecInfo">
-    <div class="infoLeft"><span class="phx">摄影师:{{phxName}}</span> | <span>出镜:{{model}}</span></div>
+    <div class="infoLeft" @click="toPhx"><span class="phx">摄影师:{{phxName}}</span></div>
     <div class="infoRight">
       <heart :colLikesId="colId"></heart>
     </div>
@@ -43,6 +43,12 @@ export default {
       }
     }
   },
+  methods:{
+    toPhx () {
+      let phxUrl = 'phx/'+this.phxId;
+      this.$root.$router.push(phxUrl);
+    }
+  },
   components: {
     heart,
   },
@@ -55,7 +61,7 @@ export default {
       type: String,
       required:true,
     },
-    model:{
+    phxId:{
       type: String,
       required:true,
     },

@@ -2,7 +2,7 @@
 <div>
   <themeTitle :my-title="picRecTitle" linkTo="recs" :notPhx="notPhx"></themeTitle>
   <pic-slider v-for="Obj in picRecs" :srcArr="Obj.srcArr"
-  :phxName="Obj.phxName" :model="Obj.model" :colId="Obj.id"></pic-slider>
+  :phxName="Obj.phxName" :phxId="Obj.phxId" :colId="Obj.id"></pic-slider>
 </div>
 </template>
 
@@ -25,23 +25,27 @@ export default {
     picSlider,
   },
   created () {
-    let picObj={
-      srcArr: [],
-      phxName: '',
-      model: '',
-      colId: '',
-    };
-    let picRecs = [];
+
+
     this.$http.get('/api/home/collection').then((res)=>{
+      let picRecs = [];
       let x,y;
       for(x in res.data){
+        let picObj={
+          srcArr: [],
+          phxName: '',
+          model: '',
+          colId: '',
+          phxId: '',
+        };
         for(y in res.data[x].images){
-          picObj.srcArr.push(res.data[x].images[y].croped_path);
+          picObj.srcArr.push(res.data[x].images[y].compressed_path);
         }
         // console.log(picObj.srcArr);
         picObj.phxName=res.data[x].photographer.name;
         picObj.model=res.data[x].model_name;
         picObj.id=res.data[x].id;
+        picObj.phxId=res.data[x].photographer.id;
         picRecs.push(picObj);
         // picObj.srcArr=[];
       }

@@ -8,19 +8,25 @@
       <p>3. 如果平台为你带来了方便，同时你也认可我们的价值观，不妨扫码进行打赏，给我们前进下去的动力和支持。</p>
       <p>4. 打赏时请备注有效信息，我们将会在平台上公布打赏人员和金额，以示感激。</p>
     </div>
+    <div class="dashang"><img :src="dashang2" alt=""></div>
+    <div class="dashang"><img :src="dashang1" alt=""></div>
     <div class="qrcode"><img :src="qrcode" alt=""></div>
   </div>
 </template>
 
 <script>
 import myXHeader from '../myXHeader.vue'
-import qrcode from './logo.png'
+import qrcode from './qrcode.jpg'
+import dashang1 from './WechatIMG4.png'
+import dashang2 from './WechatIMG5.png'
 export default {
   name: 'bonus',
   data () {
     return{
       showQa:false,
       qrcode,
+      dashang1,
+      dashang2,
     }
 
   },
@@ -48,4 +54,12 @@ export default {
     width: 100%;
   }
 }
+.dashang{
+  width: px2rem(670);
+  margin: 0 auto;
+  img{
+    width: 100%;
+  }
+}
+
 </style>
