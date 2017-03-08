@@ -59,12 +59,10 @@ export default {
     height: px2rem(650);
       text-align: center;
       font-size: 18px;
+      overflow: hidden;
   }
   .swiper-slide img {
-      width: px2rem(1080);
-      height: px2rem(650);
-      max-width: 100%;
-      max-height: 100%;
+      height: 100%;
   }
 }
 </style>

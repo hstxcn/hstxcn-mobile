@@ -83,6 +83,8 @@ export default {
 
 <style lang="scss" >@import "static/px2rem.scss";
 .phxSliderWap{
+  border-bottom: px2rem(2) solid #eceff1;
+  padding-bottom: px2rem(20);
   .phxSlider {
       width: px2rem(1080);
       height: px2rem(590);
@@ -94,12 +96,11 @@ export default {
           width: 80%;
           height: px2rem(590);
           font-size: 18px;
+          overflow: hidden;
       }
       .swiper-slide img {
           width: auto;
           height: px2rem(590);
-          max-width: 100%;
-          max-height: 100%;
       }
   }
   .phxRecInfo {

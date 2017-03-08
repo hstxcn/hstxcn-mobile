@@ -23,7 +23,7 @@
 
 <script>
 import myXHeader from '../myXHeader.vue'
-import qrcode from './logo.png'
+import qrcode from './qrcode.jpg'
 export default {
   data() {
     return {
@@ -80,11 +80,23 @@ export default {
     font-size: d2rem(12);
     text-align: center;
 }
+.mu-dialog {
+
+  border-radius: px2rem(20);
+
+}
+
 .mu-dialog-body  {
     font-size: d2rem(8);
     word-spacing: d2rem(2);
     letter-spacing: d2rem(1);
     color: #343844;
+    text-indent: d2rem(16);
+    margin: px2rem(40);
+}
+.mu-dialog-title{
+  text-align: center;
+  margin: px2rem(40);
 }
 .mu-flat-button-label{
   font-size: d2rem(8);

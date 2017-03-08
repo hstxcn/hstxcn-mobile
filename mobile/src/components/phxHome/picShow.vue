@@ -12,7 +12,7 @@
 
   <picNails v-for="(colInfo,index) in colArr"
   :colInfo="colInfo" :index="index"></picNails>
-
+  <mu-infinite-scroll :loading="loading" :loadingText="loadingText" @load="loadMore"/>
 
 </div>
 </template>
@@ -28,14 +28,18 @@ export default {
   name: "picShow",
   data() {
     let colArr = [];
+    let loadingText ="正在加载";
     return {
+      loading: false,
+      loadingText,
       bg01,
       colArr,
+      offset:0,
     }
   },
   methods : {
     fetchData: function (){
-      let colUrl = '/api/photographer/'+this.phxId+'/collection';
+      let colUrl = '/api/photographer/'+this.phxId+'/collection?limit=2&offset='+this.offset;
       let colArr = [];
       this.$http.get(colUrl).then((res)=>{
         // console.log(res);
@@ -70,19 +74,27 @@ export default {
             // console.log(colObj);
             // console.log('x:'+x);
           }
-          this.colArr=colArr;
+          this.colArr=this.colArr.concat(colArr);
+          this.loading=false;
           // console.log(colArr);
           // let str = JSON.stringify(this.colArr);
           // console.log(str);
         }
       )
-    }
+    },
+    loadMore () {
+      this.loading = true;
+      this.offset+=2;
+      this.fetchData();
+    },
   },
   created () {
     this.fetchData();
   },
   watch:{
     phxId: function(to,from){
+      this.colArr=[];
+      this.offset=0;
       this.fetchData();
     }
   },
@@ -94,7 +106,7 @@ export default {
       type: String,
       required: true,
     },
-  }
+  },
 
 }
 </script>
@@ -109,6 +121,12 @@ export default {
         height: px2rem(30);
         border-radius: px2rem(15);
         margin: px2rem(20) px2rem(10) 0;
+    }
+    .blueimp-gallery>.title{
+      font-size: px2rem(50);
+    }
+    .blueimp-gallery>.close{
+      font-size: px2rem(60);
     }
 }
 </style>

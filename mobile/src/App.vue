@@ -34,6 +34,12 @@ export default {
 @import '~vux/src/styles/1px.less';
 @import '~vux/src/styles/center.less';
 
+@media only screen and (min-width: 768px) {
+    #app{
+      width: 768px;
+      overflow: hidden;
+    }
+}
 .weui_loading_toast{
   font-size:48px !important;
 }

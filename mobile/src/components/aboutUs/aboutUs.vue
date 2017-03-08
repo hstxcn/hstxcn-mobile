@@ -22,13 +22,15 @@
       <p>一张永流传</p>
 
       <p class="title">友拍能为你做什么:</p>
-      <p class="nText">友拍筛选并集结了众多不同风格的优秀校园学生摄影师，满足个人、集体和航拍的众多需求，
+      <p class="nText pr">友拍筛选并集结了众多不同风格的优秀校园学生摄影师，满足个人、集体和航拍的众多需求，
       用最实惠的价格找到最适合你的摄影师，得到最让你满意的照片集，留下你最珍贵的回忆。</p>
       <p class="title">友拍制作团队:</p>
       <p class="nText mid">华中科技大学联创团队</p>
-      <p class="nText mid">特别鸣谢：陈国晋，唐明华，徐吉昊，</p>
-      <p class="nText mid">黄铭兴，申澳，聂路,汤跞煜，明煦智，</p>
-      <p class="nText mid">马诗语。排名不分先后。</p>
+      <p class="nText mid">特别鸣谢</p>
+      <p class="nText mid">运营：黄铭兴，马诗语</p>
+      <p class="nText mid">设计：徐吉昊，汤跞煜，申澳</p>
+      <p class="nText mid">开发：陈国晋，唐明华，聂路，明煦智</p>
+      <p class="nText mid">排名不分先后</p>
       <p class="title">联系我们:</p>
       <p class="nText mid">邮件：youpaihust@163.com</p>
       <p class="nText mid">微信公众号：youpaihust</p>
@@ -59,6 +61,8 @@ export default {
 <style lang="scss" scoped>
 @import "static/px2rem.scss";
 @import "../../common/scss/text.scss";
+.aboutUs{
+
 
 .text{
   .textImg{
@@ -70,7 +74,11 @@ export default {
     background-size: 100%;
     margin-bottom: px2rem(92);
   }
+  p.pr{
+    text-indent: d2rem(16);
+  }
   p{
+    text-indent: 0;
     text-align: center;
   }
   p.title1{
@@ -90,10 +98,12 @@ export default {
   }
   .qrcode{
     width: px2rem(470);
-    margin: 0 auto;
+    text-indent: 0;
+    margin:0 auto;
     img{
       width: 100%;
     }
   }
+}
 }
 </style>

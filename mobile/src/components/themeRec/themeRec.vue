@@ -82,7 +82,8 @@ export default {
   color: #fff;
   text-align: center;
   text-shadow: 0 0 2px rgba(0, 0, 0, .5);
-  font-size: px2rem(60);
+  font-size: px2rem(65);
+  letter-spacing: px2rem(15);
   position: absolute;
   left: 0;
   right: 0;
@@ -90,13 +91,18 @@ export default {
   text-align: center;
   top: 50%;
   transform: translateY(-50%);
+
 }
 
 .m-time {
+  letter-spacing: 0;
   font-size: px2rem(60);
   padding-top: 4px;
   display: inline-block;
+  font-weight: 300;
   margin-top: 5px;
+  text-align: center;
+  margin-left: - px2rem(50);
 }
 
 </style>

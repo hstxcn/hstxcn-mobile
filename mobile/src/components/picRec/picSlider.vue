@@ -1,5 +1,5 @@
 <template lang="html">
-  <div>
+  <div class="pics">
   <div class="picSlider">
     <swiper :options="picSliderOption">
       <swiper-slide v-for="src in srcArr">
@@ -73,6 +73,10 @@ export default {
 </script>
 
 <style lang="scss">@import "static/px2rem.scss";
+.pics{
+  border-bottom: px2rem(2) solid #eceff1;
+
+
 .picSlider {
     width: px2rem(1080);
     height: px2rem(590);
@@ -85,12 +89,15 @@ export default {
         width: 80%;
         height: px2rem(590);
         font-size: 18px;
+        overflow: hidden;
+        text-align: center;
     }
     .swiper-slide img {
         width: auto;
         height: px2rem(590);
-        max-width: 100%;
-        max-height: 100%;
+        margin:0 auto;
+        text-align: center;
+
     }
 }
 .picRecInfo {
@@ -112,5 +119,6 @@ export default {
         margin-top: px2rem(40);
         margin-right: px2rem(40);
     }
+}
 }
 </style>

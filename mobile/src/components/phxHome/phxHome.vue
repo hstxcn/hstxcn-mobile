@@ -93,7 +93,6 @@ export default {
   },
   created () {
     this.phxId = this.$route.params.id;
-    this.fetchData();
   },
   methods : {
     fetchData () {
@@ -104,6 +103,13 @@ export default {
         this.phxName = res.data.name;
         this.phxInfo = res.data.description;
         this.tags = res.data.tags;
+        if(res.data.major){
+          let obj = {
+            text: res.data.major,
+            id: null,
+          }
+          this.tags.push(obj);
+        }
         this.zanTotal = res.data.likes;
         if(res.data.avatar.croped_path){
           this.phxAvatar=res.data.avatar.croped_path;
@@ -145,8 +151,11 @@ export default {
     .phxBg{
       width: 100%;
       height: px2rem(650);
+      overflow: hidden;
+      text-align: center;
       img{
-        width: 100%;
+        margin: 0 auto;
+        width: auto;
         height: 100%;
       }
     }

@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="recOrder">
   <flexbox :gutter="0">
-      <flexbox-item>
+      <flexbox-item :span="3/8">
         <div class="flex-rec">
           <mu-flat-button label="综合排序" class="ddod" ref="button" @click="toggle">
             <span class="pticon-drop-down" :class="{reverse:open}"></span>
@@ -15,10 +15,10 @@
           </mu-popover>
         </div>
       </flexbox-item>
-      <flexbox-item><div class="flex-rec"><mu-flat-button label="人气优先">
+      <flexbox-item :span="3/8"><div class="flex-rec"><mu-flat-button label="人气优先">
       </mu-flat-button></div></flexbox-item>
-      <flexbox-item>
-        <div class="flex-rec">
+      <flexbox-item :span="2/8">
+        <div class="flex-rec shaixuan">
           <mu-flat-button label="筛选" ref="button2" @click="toggle2">
             <span class="pticon-choose"></span>
           </mu-flat-button>
@@ -81,7 +81,18 @@ export default {
 
 <style lang="scss">
 @import "static/px2rem.scss";
-
+.recOrder{
+  border-bottom: px2rem(2) solid #eceff1;
+  position: relative;
+  .shaixuan:before{
+    content: '';
+    width: px2rem(2);
+    height: px2rem(72);
+    border-left: px2rem(4) solid #eceff1;
+    position: absolute;
+    bottom: px2rem(30);
+  }
+}
     .mu-flat-button {
         width: 100%;
         height: px2rem(132);

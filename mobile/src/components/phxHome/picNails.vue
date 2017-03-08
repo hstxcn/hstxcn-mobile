@@ -62,11 +62,10 @@ export default {
           options = {
             index: link,
             event: event,
-            fullScreen: true,
             slideshowInterval: 3000,
           },
           links = this.getElementsByTagName('a');
-        Gallery(links, options);
+          Gallery(links, options);
       };
     })
   },
